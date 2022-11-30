@@ -1,13 +1,26 @@
-class Bill:
+class Room:
+	def  __init__(self, floor = 1 , room  = 1, customer = "name" , status = "available"):
+		self.__floor = floor
+		self.__room = room
+		self.__status = status
+		self.__customer = customer
 
-	"""initialize """
-	# def  __init__(self, electric = 0 , water = 0  , room = Room() , customer = Customer()):
+	@property
+	def floor(self):
+		return  self.__floor
+
+	@property
+	def room(self):
+		return  self.__room
+
+	@property
+	def status(self):
+		return  self.__status
+	@property
+	def customer(self):
+		return  self.__customer
 
 
-
-
-# class Room:
-# 	def  __init__(self, floor = 1 , room  = 1, name =  "name" , status = "unbooked"):
 
 class Customer:
 	def  __init__(self,  name = "name" , promotion = {"discount":0} , penalty = {"late" : 0 }, others = {"do_meth" : ["notes", 0]}):
@@ -39,7 +52,54 @@ class Customer:
 			raise TypeError("promotion must be a dictionary")
 		self.__promotion = new_pro
 
-	# @property
-	# def penalty(self):
+	@property
+	def penalty(self):
+		if not isinstance(self.__penalty,dict):
+			raise  TypeError("Penalty must be a dictionary")
+		return  self.__penalty
 
+	@penalty.setter
+	def penalty(self,new_p):
+		if isinstance(new_p,dict):
+			raise  TypeError("Penalty must be a dictionary")
+
+		self.__penalty = new_p
+
+class Bill:
+
+	"""initialize """
+	def  __init__(self, electric = 0 , water = 0  , room = Room() , customer = Customer()):
+		self.__electric = electric
+		self.__water = water
+		self.__room = room
+		self.__customer = customer
+
+	@property
+	def room(self):
+		return  self.__room
+
+	@property
+	def customer(self):
+		return  self.__customer
+
+	@property
+	def electric(self):
+		return  self.__electric
+
+	@electric.setter
+	def electric(self,new_e):
+		self.__electric = new_e
+
+	@property
+	def water(self):
+		return  self.__water
+
+	@water.setter
+	def water(self, new_w):
+		self.__water = new_w
+
+
+	def calculate_total(self):
+		total = 0
+		if self.room.status != "available":
 
