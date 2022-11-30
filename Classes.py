@@ -1,3 +1,17 @@
+def initialize_int_nested_list(num_floor, num_room):
+
+    dict_ = {}
+    result = []
+    for num in range(num_floor):
+        dict_[f'col{num+1}'] = num_room
+
+    for item in dict_:
+        list_ = []
+        for num in range(dict_[item]):
+            list_.append(0)
+        result.append(list_)
+
+    return  result
 class Room:
 	def  __init__(self, floor = 1 , room  = 1, customer = "name" , status = "available"):
 		self.__floor = floor
@@ -97,9 +111,20 @@ class Bill:
 	@water.setter
 	def water(self, new_w):
 		self.__water = new_w
+	def calculate_costs(self,num_floor, num_room):
+		"""the highest floor is 5 which has the cheapest room
+		   cost of 4000 Baht. further more if room number is 3
+		   or 4 they will cost 100 Baht less
+		"""
+		elec_cost = self.electric * 8
+		water_cost = self .water * 18
+		room_cost = 4000 + (5-num_floor)*100
+		if num_room == 3 or num_room == 4:
+			room_cost -= 100
+		else:
+			pass
+
+		return elec_cost,water_cost,room_cost
 
 
-	def calculate_total(self):
-		total = 0
-		if self.room.status != "available":
 
