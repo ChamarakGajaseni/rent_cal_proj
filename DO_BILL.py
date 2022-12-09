@@ -14,7 +14,7 @@ def initialize_nested_list(num_rows, num_cols):
 
     return list2
 
-def operate():
+def operate(init_txt):
     floors = 5
     room = 4
     init_txt = "9_2022.txt"
@@ -52,7 +52,10 @@ def operate():
 
 # meth = input("1.set size: \n 2.set text: \n 3. exit")
 while True:
-    meth = int(input("1.set size: \n2.set text: \n3.show \n0.exit \nenter choice: "))
+    print("Please insert text file in Rent_Calculator folder")
+    init_txt = input("enter initial month text name(mm_yyyy.txt): ")
+    new_txt = input("enter current month text name(mm_yyyy.txt): ")
+    meth = int(input("1.set size: \n2.change data: \n3.show \n0.exit \nenter choice: "))
     if meth == 0:
         break
 
@@ -61,11 +64,13 @@ while True:
         room = int(input("how many rooms per floor?: "))
     elif meth == 2:
         print("Please insert text file in Rent_Calculator folder")
-        init_txt = input("enter initial month text name(mm_yyyy.txt): ")
-        new_txt = input("enter current month text name(mm_yyyy.txt): ")
+        initmon_yr = input("enter initial month text name(month_year ex. 11_21): ")
+        newmon_yr = input("enter current month text name(month_year ex. 12_21): ")
+        init_txt = f""
+
 
     elif meth == 3:
-        operate()
+        operate(init_txt,new_txt)
 
     else:
         print("incorrect answer try again")
