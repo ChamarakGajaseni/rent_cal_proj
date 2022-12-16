@@ -23,43 +23,58 @@ class Room:
 
     @property
     def floor(self):
+        if not isinstance(self.__floor,(int,float)):
+            raise TypeError("floor must be a number")
         return self.__floor
 
     @property
     def room(self):
+        if not isinstance(self.__room,(int,float)):
+            raise TypeError("room must be a number")
         return self.__room
 
     @property
     def electric(self):
+        if not isinstance(self.__electric,(int,float)):
+            raise  TypeError("electric unit must be a number")
         return self.__electric
 
     @electric.setter
     def electric(self, new_e):
+        if not isinstance(new_e,(int,float)):
+            raise  TypeError("electric unit must be a number")
         self.__electric = new_e
 
     @property
     def water(self):
+        if not isinstance(self.__water, (int, float)):
+            raise TypeError("water unit must be a number")
         return self.__water
 
     @water.setter
     def water(self, new_w):
+        if not isinstance(new_w, (int, float)):
+            raise TypeError("water unit must be a number")
         self.__water = new_w
 
     @property
     def status(self):
+        if not isinstance(self.__status, (str)):
+            raise TypeError("status unit must be a text")
         return self.__status
 
     @status.setter
     def status(self,new_stat):
+        if not isinstance(new_stat, (str)):
+            raise TypeError("status unit must be a text")
         self.__status = new_stat
 
 
 class Customer:
-    def __init__(self, name="", floor=1, room=1, others={"discount": -0, "penalty": +0, "others(example)": 0}):
+    def __init__(self, name="", floor=1, room=1):
         self.__name = name
         self.__floor = floor
         self.__room = room
-        self.__other = others
 
     def __repr__(self):
         return f"customer's name : {self.name} room : {self.floor}0{self.room}"
@@ -77,23 +92,15 @@ class Customer:
 
     @property
     def floor(self):
+        if not isinstance(self.__floor,(int,float)):
+            raise TypeError("floor must be a number")
         return self.__floor
 
     @property
     def room(self):
+        if not isinstance(self.__room,(int,float)):
+            raise TypeError("room must be a number")
         return self.__room
-
-    @property
-    def other(self):
-        if not isinstance(self.__other, dict):
-            raise TypeError("promotion must be a dictionary")
-        return self.__other
-
-    @other.setter
-    def other(self, new):
-        if not isinstance(self.__other, dict):
-            raise TypeError("promotion must be a dictionary")
-        self.__other = new
 
 
 class Bill:
@@ -197,34 +204,3 @@ class Bill:
 
         for r in self.rooms:
             self.rooms.remove(r)
-
-
-class Vector:
-    def __init__(self, x=0, y=0):
-        self.__x = x
-        self.__y = y
-
-    @property
-    def x(self):
-        if not isinstance(self.__x, (int, float)):
-            raise TypeError("Must be a number")
-        return self.__x
-
-    @x.setter
-    def x(self, newx):
-        if not isinstance(newx, (int, float)):
-            raise TypeError("Must be a number")
-
-        self.__x = newx
-
-    @property
-    def y(self):
-        if not isinstance(self.__y, (int, float)):
-            raise TypeError("Must be a number")
-        return self.__y
-
-    @y.setter
-    def y(self, newy):
-        if not isinstance(newy, (int, float)):
-            raise TypeError("Must be a number")
-        self.__y = newy
