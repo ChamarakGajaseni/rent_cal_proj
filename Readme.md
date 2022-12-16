@@ -8,3 +8,4 @@ Customer class : for storing their names ,the floor and room they are in.
 Bill class : storing list of all Rooms and Customer object . 
 Also have the main functions of the program using datas from those list to manage the Billing.
 DO_BILL.py : the main part where imported all classes and do the program and also draw the bill table
+Github : https://github.com/ChamarakGajaseni/rent_cal_proj.git
